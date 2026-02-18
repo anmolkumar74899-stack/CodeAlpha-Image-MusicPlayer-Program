@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Player</title>
+  <meta name="description" content="A premium, responsive music player built with HTML, CSS and JavaScript." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="bg-blur"></div>
+
+  <div class="player" id="player">
+
+    <!-- Header -->
+    <div class="player-header">
+      <span class="label">NOW PLAYING</span>
+    </div>
+
+    <!-- Album Art -->
+    <div class="album-art-wrapper">
+      <div class="album-art-ring"></div>
+      <div class="album-art" id="album-art">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#2a2a3e" />
+          <circle cx="50" cy="50" r="20" fill="#1a1a2e" />
+          <circle cx="50" cy="50" r="5" fill="#ff4d6d" />
+          <!-- music note -->
+          <text x="50" y="58" text-anchor="middle" font-size="28" fill="#ff4d6d" font-family="Arial">♪</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Song Info -->
+    <div class="song-info">
+      <p id="song-title" class="song-title">Select a Song</p>
+      <p id="song-artist" class="song-artist">—</p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <span id="current-time" class="time">0:00</span>
+      <div class="progress-track">
+        <div id="progress-fill" class="progress-fill"></div>
+        <input type="range" id="progress" class="progress-input" value="0" min="0" max="100" step="0.1" />
+      </div>
+      <span id="duration" class="time">0:00</span>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="shuffle" class="ctrl-btn secondary" title="Shuffle (S)">⇄</button>
+      <button id="prev" class="ctrl-btn" title="Previous (←)">⏮</button>
+      <button id="play" class="ctrl-btn play-btn" title="Play/Pause (Space)">&#9654;</button>
+      <button id="next" class="ctrl-btn" title="Next (→)">⏭</button>
+      <button id="repeat" class="ctrl-btn secondary" title="Repeat (R)">↻</button>
+    </div>
+
+    <!-- Volume -->
+    <div class="volume-row">
+      <span id="volume-icon" class="volume-icon" title="Mute/Unmute">🔊</span>
+      <input type="range" id="volume" class="volume-slider" min="0" max="1" step="0.01" value="0.8" />
+    </div>
+
+    <!-- Playlist -->
+    <div class="playlist-container">
+      <div class="playlist-header">
+        <h3>Playlist</h3>
+        <span class="song-count" id="song-count"></span>
+      </div>
+      <ul id="playlist" class="playlist"></ul>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Update song count badge
+    document.getElementById("song-count").textContent = songs.length + " tracks";
+  </script>
+</body>
+
+</html>
